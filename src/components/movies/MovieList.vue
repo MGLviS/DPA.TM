@@ -21,6 +21,7 @@
 import MovieItem from 'components/movies/MovieItem.vue'
 import axios from 'axios'
 
+
 export default {
     name: "MovieList",
     components: {
@@ -48,22 +49,6 @@ export default {
                     console.log("Error: " + error)
                 })
 
-                //console.log(this.movies)
-
-            // const options = {
-            // method: 'GET',
-            // headers: {
-            //     accept: 'application/json',
-            //     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YWJlMTE3NWVjNzVkNDY3NDMxNjM4ZjRkYjhhZDFhYiIsInN1YiI6IjY1NWEyODY1NTM4NjZlMDBmZjA5NTkwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.uSfAXqK_k6B-LtXJjSFXego87_udgBySiAZV7HdcMno'
-            // }
-            // };
-
-            // fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
-            //     .then(response => {
-            //         this.movies = response.data
-            //     })
-            //     .then(response => console.log(response))
-            //     .catch(err => console.error(err));
         }
     },
 
