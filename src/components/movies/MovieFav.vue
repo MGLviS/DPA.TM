@@ -18,7 +18,7 @@
                     size="2em"
                     class="absolute"
                     style="top: 32px; right: 12px; transform: translateY(-50%);"
-                    @click="DeleteFavBtn(movie.id)"
+                    @click="DeleteFavBtn(movie.id,movie.title)"
                   />
                 </q-card-section>
   
@@ -158,7 +158,7 @@ export default {
                 })
 
         },
-        async DeleteFavBtn(movieId){
+        async DeleteFavBtn(movieId,movieTitle){
             console.log("quitando fav");
             try {
                 var url = "https://api.themoviedb.org/3/account/20722641/favorite";
@@ -178,7 +178,7 @@ export default {
                 await axios.post(url, data, header);
 
                 this.$q.notify({
-                    message: "Se ha quitado la pelicula",
+                    message: "Se ha quitado la pelicula " + movieTitle,
                     color: 'green',
                     position: 'top',
                     timeout: 10000

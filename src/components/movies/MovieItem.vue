@@ -101,7 +101,7 @@ export default {
                 await axios.post(url, data, header);
 
                 this.$q.notify({
-                    message: "Se añadió correctamente",
+                    message: "Se añadió " + this.movie.title + " correctamente",
                     color: 'green',
                     position: 'top',
                     timeout: 10000
