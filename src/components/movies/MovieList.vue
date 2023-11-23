@@ -1,7 +1,10 @@
 <template>
         <div class="dropdown">
         <label for="numberDropdown">Numero Página: </label>
-        <select id="numberDropdown" v-model="selectedNumber" @change="handleNumberChange">
+        <select 
+            id="numberDropdown" 
+            v-model="selectedNumber" 
+            @change="handleNumberChange">
           <option v-for="number in numbers" :key="number" :value="number">{{ number }}</option>
         </select>
       </div>
@@ -18,8 +21,10 @@
 
 <style>
 .dropdown {
-    position: relative;
+    display: flex;
+    justify-content: right;
     margin-left: 3%;
+    
 }
 .titulo-lista {
     margin-left: 2%;
