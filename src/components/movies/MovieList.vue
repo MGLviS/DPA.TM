@@ -1,5 +1,5 @@
 <template>
-    <h6> Lista Peliculas</h6>
+    <div class="titulo-lista"><h6> Peliculas disponibles</h6></div>
     <div class="movie-list">
         <div class="movie-grid">
             <div class="movie-item" v-for="movie in movies" :key="movie.id">
@@ -10,11 +10,18 @@
 </template>
 
 <style>
+.titulo-lista {
+    margin-left: 2%;
+}
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 60px;
 }
+.movie-item {
+    margin-left: 5%;
+}
+
 </style>
 
 <script>

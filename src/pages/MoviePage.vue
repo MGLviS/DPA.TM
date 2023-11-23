@@ -1,47 +1,60 @@
 <template>
-    <div class="movie-title">
-        TMDB
-    </div>
-    <div class="btn-fav">
-            <MovieFav ref="MovieFav" />
-            <div class="agregar">
-                <q-btn 
-                    @click="movief" 
-                    color="red" 
-                    icon="favorite" 
-                    label="Mis Favoritos" />
-                <br/>
-            </div>
+    <div>
+
+      <div class="sticky-header">
+        <h5>The Movie DB</h5>
+        <div class="movie-title"><br/>
+        <div class="btn-fav">
+          <MovieFav ref="MovieFav" />
+          <div class="agregar">
+            <q-btn @click="movief" color="red" icon="favorite" label="Mis Favoritos" />
+            <br />
+          </div>
         </div>
-    <div class="movie-page">
-        
+    </div>
+      </div>
+  
+      <div class="movie-page">
         <div class="movie-list">
-            <MovieList />
+          <MovieList />
         </div>
+      </div>
     </div>
-
-</template>
-
-<style>
-.movie-title {
+  </template>
+  
+  <style>
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    display: flex;
+  }
+  
+  .movie-title {
     text-align: center;
     font-size: 150%;
     margin-top: 2%;
-}
-.movie-page {
+  }
+  
+  .movie-page {
     display: flex;
     justify-content: space-between;
-}
-
-.movie-list {
+  }
+  
+  .movie-list {
     width: 99%;
-}
-
-.btn-fav {
+  }
+  
+  .btn-fav {
     text-align: left;
-    margin-left: 2%;
-}
-</style>
+    margin-left: 0%;
+  }
+  </style>
+  
 
 <script>
 
