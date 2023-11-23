@@ -12,6 +12,7 @@
             <q-icon name="stars" size="1.8em" color="warning"/>
             {{movie.vote_average}}/10
             <q-btn
+                :disable="favoriteButtonDisabled"
                 fab
                 icon="favorite"
                 color="red"
@@ -59,6 +60,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
+
 export default {
     name: "MovieItem",
     props: {
@@ -66,6 +68,16 @@ export default {
             type: Object,
             required: true
         }
+    },
+
+    data() {
+        return {
+            favoriteButtonDisabled: false
+        }
+    },
+
+    mounted(){
+        this.VerifyFav()
     },
 
     methods: {
@@ -94,6 +106,9 @@ export default {
                     position: 'top',
                     timeout: 10000
                 });
+
+                this.VerifyFav();
+                //MovieList();
             } catch (error) {
                 console.error('Error al actualizar:', error);
                 this.$q.notify({
@@ -103,7 +118,29 @@ export default {
                     timeout: 10000
                 });
             }
+        },
+
+        async VerifyFav() {
+            try {
+                var url = "https://api.themoviedb.org/3/account/20722641/favorite/movies?language=en-US&page=1&sort_by=created_at.asc";
+                var token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YWJlMTE3NWVjNzVkNDY3NDMxNjM4ZjRkYjhhZDFhYiIsInN1YiI6IjY1NWEyODY1NTM4NjZlMDBmZjA5NTkwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.uSfAXqK_k6B-LtXJjSFXego87_udgBySiAZV7HdcMno";
+                var header = {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+                };
+
+                const response = await axios.get(url, header);
+                const movieFavList = response.data.results;
+
+                const isFavorite = movieFavList.some(favMovie => favMovie.id === this.movie.id);
+
+                this.favoriteButtonDisabled = isFavorite;
+            } catch (error) {
+                console.log("Error: " + error);
+            }
         }
+
     }
 }
 </script>
